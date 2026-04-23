@@ -1,11 +1,21 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@import "tailwindcss";
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  --color-pixl: #A55E8B;
+  --color-pixl-light: #eeeeee;
+  --color-pixl-dark: #090909;
+
+  --font-pixl: "Depature Mono", monospace;
+  --default-font-family: var(--font-pixl);
+}
+
+@layer base {
+  @font-face {
+    font-family: "Depature Mono";
+    src:
+      url("public/fonts/DepartureMono-Regular.woff") format("woff"),
+      url("public/fonts/DepartureMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
 }
