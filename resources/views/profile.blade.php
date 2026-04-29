@@ -1,6 +1,6 @@
 <x-layout title="Lilac - Profile">
-        <!-- Navigation -->
-     @include('partials.navigation', ['showPostButton' => true])
+    <!-- Navigation -->
+    @include('partials.navigation', ['showPostButton' => true])
 
     <!-- Content -->
     <main class="-mx-4 flex grow flex-col gap-4 overflow-y-auto px-4 py-4">
@@ -66,10 +66,10 @@
 
         <!-- Feed -->
         <ol class="border-pixl-light/10 border-t pt-4">
-        @foreach($feedItems as $item)
-        <!-- Feed item -->
+            @foreach($feedItems as $item)
+            <!-- Feed item -->
             @include('partials.feed-item', compact('item'))
-        @endforeach
+            @endforeach
         </ol>
 
         <footer class="mt-30 ml-14">
@@ -83,5 +83,3 @@
     <!-- Sidebar -->
     @include('partials.aside')
 </x-layout>
-    
-

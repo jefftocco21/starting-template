@@ -20,9 +20,9 @@
         <img src="/images/adrian.png" alt="Avatar for Adrian" class="size-10 object-cover" />
       </a>
       @include('partials.post-form', [
-        'labelText' => 'Post Body',
-        'fieldName' => 'Post',
-        'placeholder' => "What's up _adrian?",
+      'labelText' => 'Post Body',
+      'fieldName' => 'Post',
+      'placeholder' => "What's up _adrian?",
       ])
 
     </div>
@@ -31,7 +31,7 @@
     <ol class="mt-4">
       @foreach($feedItems as $item)
       <!-- Feed item -->
-        @include('partials.feed-item', compact('item'))
+      @include('partials.feed-item', compact('item'))
       @endforeach
       <!-- More feed items... -->
     </ol>
@@ -45,8 +45,6 @@
   </main>
 
   <!-- Sidebar -->
-@include('partials.aside') 
+  @include('partials.aside')
 
 </x-layout>
-
-
