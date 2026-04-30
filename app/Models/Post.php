@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -47,6 +50,16 @@ class Post extends Model
             'profile_id' => $profile->id,
             'content' => $content,
             'parent_id' => null,
+            'repost_of_id' => null,
+        ]);
+    }
+
+    public static function reply(Profile $profile, Post $original, string $content) :self
+    {
+        return static::create([
+            'profile_id' => $profile->id,
+            'content' => $content,
+            'parent_id' => $original->id,
             'repost_of_id' => null,
         ]);
     }

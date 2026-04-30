@@ -16,3 +16,23 @@ test('allows a profile to public a post', function () {
         ->and($post->repost_of_id)->toBeNull();
 
 });
+
+test('can reply to post', function () {
+    $original = Post::factory()->create();
+
+    $replier = Profile::factory()->create();
+    $reply = Post::reply($replier, $original, 'reply content.');
+
+    expect($reply->parent->is($original))->toBeTrue()
+        ->and($original->replies)->toHaveCount(1);
+});
+
+test('can have multiple replies', function () {
+    $original = Post::factory()->create();
+    $replies = Post::factory()->count(3)->reply($original)->create();
+
+    expect($replies->first()->parent->is($original))->toBeTrue()
+        ->and($original->replies)->toHaveCount(3)
+        ->and($original->replies)->contains($replies->first())->toBeTrue();
+
+});
