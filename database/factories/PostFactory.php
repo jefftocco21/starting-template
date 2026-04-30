@@ -34,7 +34,7 @@ class PostFactory extends Factory
         ]);
     }
 
-    public function repost(Post $originalPost)
+    public function reposts(Post $originalPost)
     {
         return $this->state([
             'content' => null,
