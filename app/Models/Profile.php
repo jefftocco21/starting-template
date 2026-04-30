@@ -42,4 +42,9 @@ class Profile extends Model
         return $this->belongsToMany(Profile::class, 'follows', 'following_profile_id', 'follower_profile_id');
     }
 
+    public function following() :belongsToMany
+    {
+        return $this->belongsToMany(Profile::class, 'follows', 'follower_profile_id', 'following_profile_id');
+    }
+
 }
