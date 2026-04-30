@@ -34,6 +34,14 @@ class PostFactory extends Factory
         ]);
     }
 
+    public function repost(Post $originalPost)
+    {
+        return $this->state([
+            'content' => null,
+            'repost_of_id' => $originalPost->id,
+        ]);
+    }
+
     public function reply(Post $parentPost)
     {
         return $this->state([
