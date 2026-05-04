@@ -68,3 +68,23 @@ test('create quote repost', function () {
         ->and($repost->content)->toBe($content);
 
 });
+
+test('prevent duplicate respost', function () {
+    $post = Post::factory()->create();
+    $profile = Profile::factory()->create();
+
+    $r1 = Post::repost($profile, $post);
+    $r2 = Post::repost($profile, $post);
+
+    expect($r1->id)->toBe($r2->id);
+});
+
+test('remove repost', function() {
+    $original = Post::factory()->create();
+    $profile = Post::factory()->reposts($original)->create()->profile;;
+
+    $success = Post::removeRepost($profile, $original);
+
+    expect($original->reposts)->toHaveCount(0)
+        ->and($success)->toBeTrue();
+});
