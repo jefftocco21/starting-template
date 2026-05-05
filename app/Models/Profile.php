@@ -2,8 +2,14 @@
 
 namespace App\Models;
 
+
+use Database\Factories\ProfileFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Profile extends Model
 {
@@ -42,7 +48,7 @@ class Profile extends Model
         return $this->belongsToMany(Profile::class, 'follows', 'following_profile_id', 'follower_profile_id');
     }
 
-    public function following() :belongsToMany
+    public function followings() :belongsToMany
     {
         return $this->belongsToMany(Profile::class, 'follows', 'follower_profile_id', 'following_profile_id');
     }
